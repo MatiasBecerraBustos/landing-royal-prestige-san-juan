@@ -830,14 +830,30 @@ img {
 
 /* Tarjeta */
 .testimonios__tarjeta {
+  position: relative;
   background-color: #ffffff;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  padding: 2rem 1.5rem;
+  padding: 3.2rem 1.5rem 2rem;
   display: flex;
   flex-direction: column;
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Comilla decorativa grande en tono dorado (fiel al boceto). Es un
+   elemento puramente ornamental (aria-hidden implícito por ser ::before). */
+.testimonios__tarjeta::before {
+  content: "\201C";
+  position: absolute;
+  top: -0.4rem;
+  left: 1.2rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 5.5rem;
+  line-height: 1;
+  color: var(--color-gold);
+  opacity: 0.45;
+  pointer-events: none;
 }
 
 .testimonios__tarjeta:hover {
@@ -896,6 +912,15 @@ img {
   text-align: center;
   max-width: 720px;
   margin: 0 auto 3.5rem;
+}
+
+/* Ícono de gorrito de chef decorativo del encabezado: "display: block" +
+   "margin: 0 auto" lo centra (el header ya es text-align: center) y le da
+   el color dorado corporativo como al resto de los íconos de la sección. */
+.seccion-demostracion__header-icono {
+  display: block;
+  margin: 0 auto 1rem;
+  color: var(--color-gold);
 }
 
 .seccion-demostracion__etiqueta {
@@ -1372,10 +1397,6 @@ img {
 .seccion-servicio__boton-icono {
   flex-shrink: 0;
 }
-
-/* ============================================
-   SECCIÓN TRABAJO
-   ============================================ */
 
 /* ============================================
    SECCIÓN TRABAJAR CON NOSOTROS
@@ -1960,12 +1981,9 @@ img {
 .reveal--activo {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* Aceleración de composición SOLO mientras se está animando:
-   se activa junto con .reveal--activo y se desconecta al terminar,
-   evitando el coste de memoria permanente de will-change. */
-.reveal--activo {
+  /* Aceleración de composición SOLO mientras se está animando:
+     se activa junto con .reveal--activo y se desconecta al terminar,
+     evitando el coste de memoria permanente de will-change. */
   will-change: opacity, transform;
 }
 
